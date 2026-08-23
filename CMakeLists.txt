@@ -29,6 +29,13 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 if(CMAKE_CONFIGURATION_TYPES)
+    # Presets also support single-config generators, but this value is not
+    # meaningful for Visual Studio and other multi-config generators.
+    if(DEFINED CMAKE_BUILD_TYPE)
+        set(_marla_requested_build_type "${CMAKE_BUILD_TYPE}")
+        unset(CMAKE_BUILD_TYPE CACHE)
+    endif()
+
     list(APPEND CMAKE_CONFIGURATION_TYPES Shipping)
     list(REMOVE_DUPLICATES CMAKE_CONFIGURATION_TYPES)
     set(CMAKE_CONFIGURATION_TYPES "${CMAKE_CONFIGURATION_TYPES}" CACHE STRING "" FORCE)
@@ -50,10 +57,11 @@ if(MSVC)
     )
     add_link_options(
         "$<$<CONFIG:Release>:/DEBUG:FULL>"
+        "$<$<CONFIG:Shipping>:/INCREMENTAL:NO>"
         "$<$<CONFIG:Shipping>:/OPT:REF>"
         "$<$<CONFIG:Shipping>:/OPT:ICF>"
     )
-elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang|AppleClang")
     add_compile_options(
         "$<$<CONFIG:Debug>:-O0>"
         "$<$<CONFIG:Debug>:-g>"
@@ -62,7 +70,11 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         "$<$<CONFIG:Shipping>:-O3>"
         "$<$<CONFIG:Shipping>:-g0>"
     )
-    add_link_options("$<$<CONFIG:Shipping>:-s>")
+    if(APPLE)
+        add_link_options("$<$<CONFIG:Shipping>:LINKER:-S>")
+    else()
+        add_link_options("$<$<CONFIG:Shipping>:-s>")
+    endif()
 endif()
 
 add_subdirectory(Core)
