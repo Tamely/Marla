@@ -11,7 +11,8 @@
       "displayName": "Debug (No Opt + Symbols)",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
       }
     },
     {
@@ -19,7 +20,8 @@
       "displayName": "Release (Opt + Symbols)",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
       }
     },
     {
@@ -27,7 +29,8 @@
       "displayName": "Shipping (Opt + No Symbols)",
       "binaryDir": "${sourceDir}/build",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Shipping"
+        "CMAKE_BUILD_TYPE": "Shipping",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true
       }
     }
   ],

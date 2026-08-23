@@ -14,4 +14,20 @@ FetchContent_Declare(glfw
 
 FetchContent_MakeAvailable(glfw)
 
-target_link_libraries(Marla.Client PRIVATE glfw)
+if(NOT TARGET glfw)
+    message(FATAL_ERROR "GLFW was downloaded but did not create the expected glfw target")
+endif()
+
+set(_glfw_include_dir "${glfw_SOURCE_DIR}/include")
+if(NOT EXISTS "${_glfw_include_dir}/GLFW/glfw3.h")
+    message(FATAL_ERROR "GLFW was downloaded but GLFW/glfw3.h was not found in ${_glfw_include_dir}")
+endif()
+
+if(NOT TARGET glfw::glfw)
+    add_library(glfw::glfw ALIAS glfw)
+endif()
+
+# Keep this explicit on the client so generated IDE projects and compilation
+# databases expose GLFW even when they do not inspect transitive target usage.
+target_include_directories(Marla.Client PRIVATE "${_glfw_include_dir}")
+target_link_libraries(Marla.Client PRIVATE glfw::glfw)
