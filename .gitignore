@@ -1,0 +1,27 @@
+# CMake build directories
+/build/
+/out/
+/cmake-build-*/
+
+# CMake and Ninja generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+compile_commands.json
+build.ninja
+.ninja_deps
+.ninja_log
+
+# Compiled artifacts
+*.a
+*.dll
+*.dll.a
+*.exe
+*.ilk
+*.lib
+*.obj
+*.o
+*.pdb
+
+# CLion / JetBrains
+/.idea/

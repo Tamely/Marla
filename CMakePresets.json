@@ -1,0 +1,60 @@
+{
+  "version": 10,
+  "cmakeMinimumRequired": {
+    "major": 4,
+    "minor": 3,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "Debug",
+      "displayName": "Debug (No Opt + Symbols)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
+    },
+    {
+      "name": "Release",
+      "displayName": "Release (Opt + Symbols)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "Shipping",
+      "displayName": "Shipping (Opt + No Symbols)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Shipping"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "Debug",
+      "configurePreset": "Debug",
+      "targets": [
+        "Marla.Client"
+      ]
+    },
+    {
+      "name": "Release",
+      "configurePreset": "Release",
+      "targets": [
+        "Marla.Client"
+      ]
+    },
+    {
+      "name": "Shipping",
+      "configurePreset": "Shipping",
+      "targets": [
+        "Marla.Client"
+      ]
+    }
+  ]
+}
