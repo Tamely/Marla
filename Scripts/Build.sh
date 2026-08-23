@@ -23,8 +23,10 @@ project_root=$(CDPATH= cd -- "$script_directory/.." && pwd)
 
 cd "$project_root"
 
+generator=${CMAKE_GENERATOR:-Ninja}
+
 echo "Configuring Marla: $configuration"
-cmake --preset "$configuration"
+cmake --preset "$configuration" -G "$generator"
 
 echo "Building Marla: $configuration"
 cmake --build --preset "$configuration" --parallel
