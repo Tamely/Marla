@@ -8,6 +8,10 @@
 /Client/vendor/glfw/*
 !/Client/vendor/glfw/premake5.lua
 
+# spdlog sources downloaded by the platform setup scripts
+/Client/vendor/spdlog/*
+!/Client/vendor/spdlog/premake5.lua
+
 # Compiled artifacts
 *.a
 *.dll

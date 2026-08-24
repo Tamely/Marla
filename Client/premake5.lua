@@ -27,6 +27,7 @@ project "Marla.Client"
         "%{IncludeDir.Vendor}",
         "%{IncludeDir.GLAD}",
         "%{IncludeDir.GLFW}",
+        "%{IncludeDir.SPDLOG}",
 
         "%{IncludeDir.Client}/Core",
     }
@@ -34,10 +35,17 @@ project "Marla.Client"
     links {
         "Marla.Core",
         "Glad",
-        "GLFW"
+        "GLFW",
+        "Spdlog"
     }
 
-    defines { "GLFW_INCLUDE_NONE" }
+    defines {
+        "GLFW_INCLUDE_NONE",
+        "SPDLOG_COMPILED_LIB"
+    }
+
+    filter "action:vs*"
+        buildoptions { "/utf-8" }
 
     filter "files:**.cppm"
         compileas "Module"

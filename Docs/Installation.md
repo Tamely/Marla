@@ -16,6 +16,7 @@ The setup scripts download and verify these project dependencies:
 | --- | --- | --- |
 | Premake | 5.0.0-beta8 | `Scripts/bin` |
 | GLFW | 3.5.1 | `Client/vendor/glfw` |
+| spdlog | 1.17.0 | `Client/vendor/spdlog` |
 | GLAD | 0.1.36, OpenGL 4.6 Core | Already checked into `Client/vendor/glad` |
 
 ## Generate and open the solution
@@ -109,8 +110,8 @@ GLFW uses its X11 backend on Linux and Cocoa backend on macOS.
 ## Project layout
 
 - `Marla.Core` is a static library containing the Core C++20 module.
-- `Marla.Client` is the executable and links Core, GLAD, and GLFW.
-- `Glad` and `GLFW` are separate dependency projects in the generated solution.
+- `Marla.Client` is the executable and links Core, GLAD, GLFW, and spdlog.
+- `Glad`, `GLFW`, and `Spdlog` are separate dependency projects in the generated solution.
 - `Client/src` and `Client/vendor` are client include roots.
 
 The root `Dependencies.lua` owns shared include and library paths. Like Hazel, each dependency keeps its own `premake5.lua` beside its vendor sources, and the root workspace includes those vendor folders under the `Dependencies` solution group.

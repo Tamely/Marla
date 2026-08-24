@@ -51,6 +51,7 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 group "Dependencies"
     include "Client/vendor/glad"
     include "Client/vendor/glfw"
+    include "Client/vendor/spdlog"
 group ""
 
 group "Core"
