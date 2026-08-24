@@ -1,16 +1,12 @@
-# CMake build directories
+# Generated projects and build output
 /build/
 /out/
 /cmake-build-*/
+/Scripts/bin/
 
-# CMake and Ninja generated files
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-compile_commands.json
-build.ninja
-.ninja_deps
-.ninja_log
+# GLFW sources downloaded by the platform setup scripts
+/Client/vendor/glfw/*
+!/Client/vendor/glfw/premake5.lua
 
 # Compiled artifacts
 *.a
@@ -25,3 +21,15 @@ build.ninja
 
 # CLion / JetBrains
 /.idea/
+
+# Visual Studio
+/.vs/
+/Client/src/Marla.Client.vcxproj
+/Client/src/Marla.Client.vcxproj.filters
+/Client/src/Marla.Client.vcxproj.user
+/Core/src/Marla.Core.vcxproj
+/Core/src/Marla.Core.vcxproj.filters
+/Core/src/Marla.Core.vcxproj.user
+*.suo
+*.user
+*.VC.db
