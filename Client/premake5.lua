@@ -1,7 +1,7 @@
 project "Marla.Client"
     kind "ConsoleApp"
     language "C++"
-    cppdialect "C++20"
+    cppdialect "C++23"
     enablemodules "On"
     scanformoduledependencies "On"
     staticruntime "Off"
